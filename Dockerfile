@@ -4,12 +4,14 @@ MAINTAINER Ron Kurr <kurr@kurron.org>
 
 ENV WEBIDE_JDK /usr/lib/jvm/zulu-8-amd64
 
-ENTRYPOINT ["/opt/WebStorm-172.3317.70/bin/webstorm.sh"]
+ENTRYPOINT ["/opt/WebStorm-193.5662.54/bin/webstorm.sh"]
 
 USER root
 
-ADD https://download.jetbrains.com/webstorm/WebStorm-2018.1.5.tar.gz /opt
+ADD https://download.jetbrains.com/webstorm/WebStorm-2019.3.1.tar.gz /opt
 
-RUN rm -rf /opt/WebStorm-172.3317.70/jre64
+RUN tar -xzf /opt/WebStorm-2019.3.1.tar.gz -C /opt && \
+    ls -Allh /opt && \
+    rm -rf /opt/WebStorm-*/jre64 /opt/WebStorm-2019.3.1.tar.gz
 
 USER powerless
